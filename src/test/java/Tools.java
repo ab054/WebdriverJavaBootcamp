@@ -1,7 +1,6 @@
 public class Tools {
 
-    public static void myPrint(String parameter){
-        System.out.println(parameter);
+    public static void myPrint(String messageToPrint){
+        System.out.println(messageToPrint);
     }
-
 }

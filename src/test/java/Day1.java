@@ -164,14 +164,128 @@ public class Day1 {
 
         while (i < 10){
             Tools.myPrint("While Loop print");
-            //i++;
-            i = i + 2;
+            i++; // i = i + 1;
+            //i = i + 2;
+
         }
     }
 
 
+    @Test
+    public void test013() throws Exception {
+        Point point = new Point(3, 4);
+        Point point1 = new Point();
+
+    }
+
+    @Test
+    public void test014Array() throws Exception {
+        int[] arr = new int[10];
+
+        int length = arr.length;
+
+        System.out.println(length);
+
+        arr[0] = 1;
+        arr[1] = 2;
+        arr[2] = 3;
+
+
+        int[] arr2 = {1, 2, 3, 4, 5};
+    }
+
+    @Test
+    public void test015PrintArrayMembers() throws Exception {
+        int[] arr = {145, 141, 123, 1451, 1513};
+
+        //for loop
+        //access array values by it's index
+        //printout values
+
+        int arrLength = arr.length;
+
+        for(int i = 0; i <= arrLength; i++) {
+            int value = arr[i];
+            System.out.println(value);
+        }
+    }
+
+    @Test
+    public void test016PringInReverseOrder() throws Exception {
+        int[] arr = {145, 141, 123, 1451, 1513};
+
+        int arrLength = arr.length;
+
+        for(int i = arrLength - 1; i >= 0 ; i--) {
+            int value = arr[i];
+            System.out.println(value);
+        }
+    }
+
+    @Test
+    public void test016PringInReverseOrder2() throws Exception {
+        int[] arr = {145, 141, 123, 1451, 1513};
+
+        int arrLength = arr.length;
+
+        for(int i = 0; i < arrLength; i ++) {
+            int value = arr[arrLength - 1 - i];
+            System.out.println(value);
+        }
+    }
+
+    @Test
+    public void test016PringInReverseOrder3()  {
+        Point point1 = new Point(1, 3);
+        Point point2 = new Point(3,5);
+        Point[] points = {point1, point2, new Point(2,6), new Point(6,7), new Point(1,5), new Point(2,6)};
+
+        int arrLength = points.length;
+
+        for(int i = 0; i < arrLength; i ++) {
+            Point currentElement = points[i];
+            System.out.println(currentElement.x);
+        }
+        System.out.println(points[4].y);
+
+    }
+
+    @Test
+    public void testPrintEvenNumbers() {
+        for (int i = 1; i <= 10; i++) {
+            if (i%2==0) {
+                System.out.println(i);
+            }
+
+        }
 
 
 
-
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
