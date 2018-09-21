@@ -73,8 +73,6 @@ public class Day1 {
         if (!b) {
             System.out.println(toBe);
         }
-
-
     }
 
     @Test
@@ -140,7 +138,6 @@ public class Day1 {
         for (int i = 0; i < 3; i++) {
             System.out.println("Print is happened");
         }
-
     }
 
     @Test
@@ -175,7 +172,6 @@ public class Day1 {
     public void test013() throws Exception {
         Point point = new Point(3, 4);
         Point point1 = new Point();
-
     }
 
     @Test
@@ -247,7 +243,6 @@ public class Day1 {
             System.out.println(currentElement.x);
         }
         System.out.println(points[4].y);
-
     }
 
     @Test
@@ -258,9 +253,21 @@ public class Day1 {
             }
 
         }
+    }
 
+    @Test
+    public void countCharInString() {
+        String text = "hello world";
+        char ch = 'l';
+        char[] s = text.toCharArray();
+        int counter = 0;
 
-
+        for (int i = 0; i < s.length; i++) {
+            if (s[i] == ch) {
+                counter++;
+            }
+        }
+        System.out.println(counter);
     }
 }
 
