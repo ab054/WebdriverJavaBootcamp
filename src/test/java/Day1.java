@@ -258,9 +258,6 @@ public class Day1 {
             }
 
         }
-
-
-
     }
 }
 
