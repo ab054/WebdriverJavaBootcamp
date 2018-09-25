@@ -90,7 +90,7 @@ public class Class1 {
         Assert.assertTrue(driver.getPageSource().contains("Congratulations! You must have the proper credentials."));
     }
 
-    //DONE
+  //DONE
     @Test
     public void forgotPassword() {
         driver.navigate().to("http://the-internet.herokuapp.com/forgot_password");
