@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Component Tests" verbose="2" annotations="JDK">
+
+
+
+    <test name="GoogleSearchTest1" preserve-order="true" >
+        <parameter name="queryParameter"  value="Portnov computer school"/>
+        <classes>
+            <class name="loginEx.GoogleSearchTest" />
+        </classes>
+    </test>
+
+    <test name="GoogleSearchTest2" preserve-order="true" >
+        <parameter name="queryParameter"  value="Mikhail Portnov"/>
+        <classes>
+            <class name="loginEx.GoogleSearchTest" />
+        </classes>
+    </test>
+
+
+</suite>

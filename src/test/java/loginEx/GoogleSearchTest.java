@@ -21,10 +21,11 @@ public class GoogleSearchTest {
         driver.quit();
     }
 
+    @Parameters({ "queryParameter" })
     @Test
-    public void test001() throws Exception {
+    public void test001(String queryString) throws Exception {
         navigatingToMainPage();
-        typeRequestInSearchInput();
+        typeRequestInSearchInput(queryString);
         submitSearch();
         printOutAmountOfResult();
     }
@@ -38,8 +39,8 @@ public class GoogleSearchTest {
         driver.findElement(MainPage.submitButton).click();
     }
 
-    private void typeRequestInSearchInput() {
-        driver.findElement(MainPage.searchInput).sendKeys("Portnov computer school");
+    private void typeRequestInSearchInput(String queryString) {
+        driver.findElement(MainPage.searchInput).sendKeys(queryString);
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
