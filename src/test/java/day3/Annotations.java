@@ -5,13 +5,13 @@ import org.testng.annotations.*;
 public class Annotations {
 
     // test case 1
-    @Test
+    @Test(groups = { "slow"})
     public void testCase1() {
         System.out.println("in test case 1");
     }
 
     // test case 2
-    @Test
+    @Test(groups = { "fast"})
     public void testCase2() {
         System.out.println("in test case 2");
     }

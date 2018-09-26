@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Component Tests" verbose="2" annotations="JDK">
+
+    <test name="Groups" preserve-order="true" >
+        <groups>
+            <run>
+                <include name="fast"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="day3.Annotations" />
+        </classes>
+    </test>
+</suite>

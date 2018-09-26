@@ -32,7 +32,7 @@
                 <version>2.22.0</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <file>src/test/resources/testNG.xml</file>
+                        <file>src/test/resources/parallel.xml</file>
                     </suiteXmlFiles>
                     <properties>
                         <property>
