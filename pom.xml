@@ -22,11 +22,27 @@
             <artifactId>selenium-java</artifactId>
             <version>3.14.0</version>
         </dependency>
-
-
-
     </dependencies>
 
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <file>src/test/resources/testNG.xml</file>
+                    </suiteXmlFiles>
+                    <properties>
+                        <property>
+                            <name>parallel</name>
+                            <value>tests</value>
+                        </property>
+                    </properties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
