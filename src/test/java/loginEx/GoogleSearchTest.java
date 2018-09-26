@@ -1,10 +1,9 @@
 package loginEx;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class GoogleSearchTest {
 
@@ -12,8 +11,14 @@ public class GoogleSearchTest {
 
     @BeforeTest
     public void setupDriver() {
-        System.setProperty("webdriver.gecko.driver", "/Users/abarabash/Documents/MyProject/WebdriverJavaBootcamp/src/test/resources/geckodriver");
+        System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/test/resources/geckodriver.exe");
         driver = new FirefoxDriver();
+    }
+
+
+    @AfterTest
+    public void closeDrive() {
+        driver.quit();
     }
 
     @Test
