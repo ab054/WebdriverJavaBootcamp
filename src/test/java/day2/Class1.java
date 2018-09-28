@@ -11,6 +11,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.List;
 
 public class Class1 {
@@ -19,7 +20,9 @@ public class Class1 {
 
     @BeforeTest
     public void setupDriver() {
-        System.setProperty("webdriver.gecko.driver", "/Users/abarabash/Documents/MyProject/WebdriverJavaBootcamp/src/test/resources/geckodriver");
+        File file = new File("src/test/resources/");
+        String absolutePath = file.getAbsolutePath();
+        System.setProperty("webdriver.gecko.driver", absolutePath + "/geckodriver");
         driver = new FirefoxDriver();
     }
 
