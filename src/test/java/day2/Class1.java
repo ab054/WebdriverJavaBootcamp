@@ -1,16 +1,19 @@
 package day2;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.List;
 
 public class Class1 {
@@ -19,7 +22,9 @@ public class Class1 {
 
     @BeforeTest
     public void setupDriver() {
-        System.setProperty("webdriver.gecko.driver", "/Users/abarabash/Documents/MyProject/WebdriverJavaBootcamp/src/test/resources/geckodriver");
+        File file = new File("src/test/resources");
+        String path = file.getAbsolutePath();
+        System.setProperty("webdriver.gecko.driver", path + "/geckodriver" );
         driver = new FirefoxDriver();
     }
 
@@ -128,8 +133,68 @@ public class Class1 {
         String secondCheckboxChecked = elementList.get(1).getAttribute("checked");
 
         Assert.assertEquals(secondCheckboxChecked, "true");
-
     }
+
+    @Test
+    public void testDropdown() {
+        driver.get("https://the-internet.herokuapp.com/dropdown");
+        Select dropdown = new Select(driver.findElement(By.id("dropdown")));
+        dropdown.selectByVisibleText("Option 2");
+
+        WebElement option = dropdown.getFirstSelectedOption();
+
+        String actualText = option.getText();
+        Assert.assertEquals(actualText, "Option 2");
+    }
+
+    @Test
+    public void testAlerts() {
+        driver.get("https://the-internet.herokuapp.com/javascript_alerts");
+        WebElement btn = driver.findElement(By.xpath("//button[@onclick='jsConfirm()']"));
+        btn.click();
+        String textFromAlert = driver.switchTo().alert().getText();
+        Assert.assertEquals(textFromAlert, "I am a JS Confirm");
+    }
+
+    @Test
+    public void testLoginJavaScript() {
+        driver.get("https://the-internet.herokuapp.com/login");
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("document.getElementById('username').value='tomsmith'");
+        js.executeScript("document.getElementById('password').value='SuperSecretPassword!'");
+        String actualResult = driver.findElement(By.id("flash")).getText();
+        String expectedResult = "You logged into a secure area!";
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    // 1st test: valid email -> next = we see password screen
+    // 2nd test: click forget email -> next = we see find your email screen
+    // 3rd test: invalid email = couldn't find your google acc
+    // 4rd test: create account link
+    // 5th test: 0 characters -> next = enter email ... error message
+    // 6th test: click learn more
+    // 7th test: Dropdown select value
+    // 8th test: Help -> new tab
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // HomeWork
 //    @Test
