@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.List;
+import java.util.Set;
 
 public class Class1 {
 
@@ -168,24 +169,48 @@ public class Class1 {
     }
 
     // 1st test: valid email -> next = we see password screen
+    @Test
+    public void testValidEmail() {
+        driver.get("https://google.com/accounts");
+        driver.findElement(By.id("identifierId")).sendKeys("alekseipetrovski");
+        driver.findElement(By.xpath("//span[text() = 'Next']")).click();
+
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.textToBe(By.id("headingText"), "Welcome1"));
+    }
+
     // 2nd test: click forget email -> next = we see find your email screen
+    @Test
+    public void testForgotEmail() {
+        driver.get("https://google.com/accounts");
+        driver.findElement(By.xpath("//span[@class='RveJvd snByac']")).click();
+
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.textToBe(By.id("headingText"), "Find your email"));
+    }
+
     // 3rd test: invalid email = couldn't find your google acc
     // 4rd test: create account link
+
     // 5th test: 0 characters -> next = enter email ... error message
+    @Test
+    public void test0HandlingCharacters() {
+        driver.get("https://google.com/accounts");
+        driver.findElement(By.xpath("//span[@class='RveJvd snByac']")).click();
+        Boolean containsText = driver.getPageSource().contains("Enter an email or phone number");
+        Assert.assertTrue(containsText);
+    }
+
+
     // 6th test: click learn more
     // 7th test: Dropdown select value
     // 8th test: Help -> new tab
 
 
+    @Test
+    public void testTabHandlers() throws Exception {
 
-
-
-
-
-
-
-
-
+    }
 
 
 
