@@ -1,5 +1,6 @@
 package day2;
 
+import com.beust.jcommander.Parameter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -122,17 +125,12 @@ public class Class1 {
     @Test
     public void testheckboxes() throws Exception {
         String url = "https://the-internet.herokuapp.com/checkboxes";
-
         driver.get(url);
-
         List<WebElement> elementList = driver.findElements(By.cssSelector("input[type='checkbox']"));
-
         for(WebElement each : elementList){
             System.out.println(each.getAttribute("checked"));
         }
-
         String secondCheckboxChecked = elementList.get(1).getAttribute("checked");
-
         Assert.assertEquals(secondCheckboxChecked, "true");
     }
 
@@ -200,6 +198,49 @@ public class Class1 {
         Boolean containsText = driver.getPageSource().contains("Enter an email or phone number");
         Assert.assertTrue(containsText);
     }
+
+    @Parameters({"param1"})
+    @Test
+    public void forgotPasswordParam(String testExpectedMessage) {
+        String pageAlert = testExpectedMessage;
+
+        driver.get("https://the-internet.herokuapp.com/forgot_password");
+        driver.findElement(By.id("email")).sendKeys("my@email.com");
+        driver.findElement(By.id("form_submit")).click();
+        WebElement element = driver.findElement(By.id("content"));
+        String result = element.getText();
+        Assert.assertEquals(result, pageAlert);
+    }
+
+    @Parameters({"paramTwo"})
+    @Test
+    public void oneMoreParam(String str) {
+        System.out.println(str);
+    }
+
+
+
+//    Cedric | 36
+//    ____________
+//    Anne   | 37
+//    ____________
+//    myName | 59
+//    ____________
+
+    @DataProvider(name = "dataProviderName")
+    public Object[][] createData1() {
+        return new Object[][] {
+                { "Cedric", 36},
+                { "Anne", 37},
+                { "myName", 59}
+        };
+    }
+
+    @Test(dataProvider = "dataProviderName")
+    public void verifyData1(String n1, int n2) {
+        System.out.println(n1 + " " + n2);
+    }
+
 
 
     // 6th test: click learn more

@@ -9,14 +9,23 @@ public class GoogleSearchTest {
 
     private WebDriver driver;
 
-    @BeforeTest
+
+    @BeforeTest(groups = {"fast", "slow"})
     public void setupDriver() {
         System.setProperty("webdriver.gecko.driver", "/Users/abarabash/Documents/MyProject/WebdriverJavaBootcamp/src/test/resources/geckodriver");
         driver = new FirefoxDriver();
     }
 
-    @Test
+    @Test(groups = {"fast"})
     public void test001() throws Exception {
+        navigatingToMainPage();
+        typeRequestInSearchInput();
+        submitSearch();
+        printOutAmountOfResult();
+    }
+
+    @Test(groups = {"slow"})
+    public void test002() throws Exception {
         navigatingToMainPage();
         typeRequestInSearchInput();
         submitSearch();

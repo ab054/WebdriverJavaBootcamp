@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" >
+    <test name="Test with Wrong expectation">
+        <classes>
+            <class name="day2.Class1">
+                <parameter name="paramTwo"  value="HELLO WORLD!!!!"/>
+                <methods>
+                    <include name="oneMoreParam"/>
+                </methods>
+
+            </class>
+        </classes>
+    </test>
+</suite>

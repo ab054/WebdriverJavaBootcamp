@@ -1,0 +1,26 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" >
+    <test name="Test with Wrong expectation">
+        <classes>
+            <class name="day2.Class1">
+                <parameter name="param1"  value="Value came from params.xml"/>
+                <methods>
+                    <include name="forgotPasswordParam"/>
+                </methods>
+
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test with Correct expectations">
+        <classes>
+            <class name="day2.Class1">
+                <parameter name="param1"  value="Your e-mail's been sent!"/>
+                <methods>
+                    <include name="forgotPasswordParam"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
