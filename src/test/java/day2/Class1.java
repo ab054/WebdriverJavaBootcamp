@@ -53,22 +53,19 @@ public class Class1 {
         driver.findElement(By.id("gb_70")).click();
 
         //CssSelector tag_name + class name
-//        driver.findElement(By.cssSelector("a.gb_we.gb_Aa.gb_Fb"));
+        //driver.findElement(By.cssSelector("a.gb_we.gb_Aa.gb_Fb"));
         //CssSelector tag_name + id
-//        driver.findElement(By.cssSelector("a[id='gb_70']"));
+        //driver.findElement(By.cssSelector("a[id='gb_70']"));
         //Partial link text
-//        driver.findElement(By.partialLinkText("Sign"));
+        //driver.findElement(By.partialLinkText("Sign"));
         driver.findElement(By.id("identifierId")).sendKeys("bootcampPortnov@gmail.com");
 
-
-//        driver.findElement(By.xpath("//span[.='Next']")).click();
-//        same as above
+        //driver.findElement(By.xpath("//span[.='Next']")).click();
+        //same as above
         driver.findElement(By.xpath("//span[text()='Next']")).click();
         driver.findElement(By.xpath("//input[type='password']")).sendKeys("abcdef1234@");
         driver.findElement(By.xpath("//span[text()='Next']")).click();
-
     }
-
 
     @Test
     public void forgotPassword() {
@@ -84,11 +81,8 @@ public class Class1 {
     public void visibilityOfElementLocated() throws Exception {
         driver.get("https://the-internet.herokuapp.com/dynamic_loading/1");
         driver.findElement(By.xpath("//div[@id='start']/button")).click();
-
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='finish']/H4")));
-
-
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='finish']/H4")).getText(), "Hello World!");
     }
 
@@ -116,7 +110,6 @@ public class Class1 {
         String password = "admin";
         String stringToVerify = "Congratulations! You must have the proper credentials.";
         String urlWithAuth = "https://" + userName + ":" + password + "@" + url;
-
         driver.get(urlWithAuth);
         boolean result = driver.getPageSource().contains(stringToVerify);
         Assert.assertTrue(result);
@@ -139,9 +132,7 @@ public class Class1 {
         driver.get("https://the-internet.herokuapp.com/dropdown");
         Select dropdown = new Select(driver.findElement(By.id("dropdown")));
         dropdown.selectByVisibleText("Option 2");
-
         WebElement option = dropdown.getFirstSelectedOption();
-
         String actualText = option.getText();
         Assert.assertEquals(actualText, "Option 2");
     }
@@ -182,7 +173,6 @@ public class Class1 {
     public void testForgotEmail() {
         driver.get("https://google.com/accounts");
         driver.findElement(By.xpath("//span[@class='RveJvd snByac']")).click();
-
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.textToBe(By.id("headingText"), "Find your email"));
     }
@@ -197,6 +187,36 @@ public class Class1 {
         driver.findElement(By.xpath("//span[@class='RveJvd snByac']")).click();
         Boolean containsText = driver.getPageSource().contains("Enter an email or phone number");
         Assert.assertTrue(containsText);
+    }
+
+
+    // 6th test: click learn more
+    // 7th test: Dropdown select value
+    // 8th test: Help -> new tab
+    @Test
+    public void testTabHandlers() throws Exception {
+        driver.get("https://google.com/accounts");
+        driver.findElement(By.linkText("Help")).click();
+        String childWindow = null;
+        String parentWindow = driver.getWindowHandle();
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        Set<String> allWindows = driver.getWindowHandles();
+        int count = allWindows.size();
+        System.out.println("Windows Count: " + count);
+        for (String temp : allWindows) {
+            if (!temp.equals(parentWindow)) {
+                childWindow = temp;
+            }
+        }
+        System.out.println("Parent Window: " + parentWindow);
+        System.out.println("Child Window: " + childWindow + "\n");
+        driver.switchTo().window(childWindow);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("material-bar-custom-product-name")));
+        String newWindowText = driver.findElement(By.id("material-bar-custom-product-name")).getText();
+        System.out.println("Text from new window: " + newWindowText + "\n");
+        driver.close();
+        driver.switchTo().window(parentWindow);
     }
 
     @Parameters({"param1"})
@@ -218,15 +238,6 @@ public class Class1 {
         System.out.println(str);
     }
 
-
-
-//    Cedric | 36
-//    ____________
-//    Anne   | 37
-//    ____________
-//    myName | 59
-//    ____________
-
     @DataProvider(name = "dataProviderName")
     public Object[][] createData1() {
         return new Object[][] {
@@ -240,38 +251,4 @@ public class Class1 {
     public void verifyData1(String n1, int n2) {
         System.out.println(n1 + " " + n2);
     }
-
-
-
-    // 6th test: click learn more
-    // 7th test: Dropdown select value
-    // 8th test: Help -> new tab
-
-
-    @Test
-    public void testTabHandlers() throws Exception {
-
-    }
-
-
-
-
-
-
-
-
-
-
-    // HomeWork
-//    @Test
-//    public void testInterface() throws Exception {
-//        Selenium driver = new SeleniumAleksDriver();
-//        //todo
-//        Selenium driverMine = new SeleniumMyOwnDriver();
-//        driver.get();
-//        driver.anotherMethod();
-//
-//        driverMine.anotherMethod();
-//        driverMine.get();
-//    }
 }
