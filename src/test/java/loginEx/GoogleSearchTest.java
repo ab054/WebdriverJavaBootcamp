@@ -11,7 +11,7 @@ public class GoogleSearchTest {
 
     @BeforeTest
     public void setupDriver() {
-        System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/test/resources/geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/test/resources/geckodriver");
         driver = new FirefoxDriver();
     }
 

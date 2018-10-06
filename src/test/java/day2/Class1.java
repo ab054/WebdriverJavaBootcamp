@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -17,7 +18,7 @@ public class Class1 {
 
     private WebDriver driver;
 
-    @BeforeTest
+    @BeforeMethod
     public void setupDriver() {
         System.setProperty("webdriver.gecko.driver", "/Users/abarabash/Documents/MyProject/WebdriverJavaBootcamp/src/test/resources/geckodriver");
         driver = new FirefoxDriver();

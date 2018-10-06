@@ -1,11 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Component Tests" verbose="2" annotations="JDK">
-    <test name="GoogleSearchTest" preserve-order="true" >
+<suite name="Parallel Suit" parallel="tests" thread-count="2" verbose="2" annotations="JDK">
+    <test name="GoogleSearchTest" >
+        <parameter name="queryParameter" value="Portnov Computer School"/>
         <classes>
             <class name="loginEx.GoogleSearchTest" />
         </classes>
     </test>
-    <test name="YahooSearchTest" preserve-order="true" >
+    <test name="YahooSearchTest">
         <classes>
             <class name="YahooSearch.YahooSearchTest" />
         </classes>
