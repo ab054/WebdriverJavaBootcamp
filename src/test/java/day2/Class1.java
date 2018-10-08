@@ -191,7 +191,18 @@ public class Class1 {
 
 
     // 6th test: click learn more
+
     // 7th test: Dropdown select value
+    @Test
+    public void dropDown() {
+        driver.get("https://google.com/accounts");
+        driver.findElement(By.xpath("//div[@jsname='LgbsSe']")).click();
+        driver.findElement(By.xpath("//div[@class='OA0qNb ncFHed']/div[@data-value='da']")).click();
+        String pageTitle = driver.findElement(By.id("headingText")).getText();
+        Assert.assertEquals(pageTitle, "Log ind");
+    }
+
+
     // 8th test: Help -> new tab
     @Test
     public void testTabHandlers() throws Exception {
